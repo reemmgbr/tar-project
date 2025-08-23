@@ -1,0 +1,108 @@
+/* Contact Form Style */
+.form-container {
+  width: 400px;
+  background: linear-gradient(#111, #111) padding-box,
+              linear-gradient(145deg, transparent 35%, #ff9800, #ff5722) border-box;
+  border: 2px solid transparent;
+  padding: 32px 24px;
+  font-size: 14px;
+  font-family: inherit;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  border-radius: 16px;
+}
+
+.form-container button:active {
+  scale: 0.95;
+}
+
+.form-container .form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-container .form-group label {
+  margin-bottom: 5px;
+  color: #ff9800;
+  font-weight: 600;
+  font-size: 12px;
+}
+
+.form-container .form-group input,
+.form-container .form-group textarea {
+  width: 100%;
+  padding: 12px 16px;
+  border-radius: 8px;
+  color: #fff;
+  background-color: #1a1a1a;
+  border: 1px solid #333;
+  font-family: inherit;
+}
+
+.form-container .form-group input::placeholder,
+.form-container .form-group textarea::placeholder {
+  opacity: 0.5;
+}
+
+.form-container .form-group input:focus,
+.form-container .form-group textarea:focus {
+  outline: none;
+  border-color: #ff9800;
+}
+
+.form-container .form-group textarea {
+  resize: none;
+  height: 96px;
+}
+
+.form-container .form-submit-btn {
+  color: #111;
+  font-weight: 600;
+  width: 40%;
+  background: #ff9800;
+  border: none;
+  padding: 12px 16px;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: 0.3s ease;
+}
+
+.form-container .form-submit-btn:hover {
+  background-color: #e68900;
+  color: white;
+}
+.form-container {
+  width: 100%;
+  max-width: 700px; /* كبرنا الحد الأقصى بدل 400px */
+  background: linear-gradient(#111, #111) padding-box,
+              linear-gradient(145deg, transparent 35%, #ff9800, #ff5722) border-box;
+  border: 2px solid transparent;
+  padding: 40px 32px; /* كبرنا الـ padding */
+  font-size: 16px; /* خط أكبر */
+  font-family: inherit;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  border-radius: 16px;
+  box-sizing: border-box;
+}
+
+.form-container .form-group input,
+.form-container .form-group textarea {
+  padding: 14px 18px; /* كبرنا ال inputs */
+  font-size: 15px;
+}
+
+.form-container .form-group textarea {
+  height: 140px; /* كبرنا المساحة */
+}
+
+.form-container .form-submit-btn {
+  width: 50%; /* أوسع شوية */
+  padding: 14px 20px;
+  font-size: 15px;
+}
