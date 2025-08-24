@@ -1,7 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
 import Button from "./button/Button";
-import imgstudio from "./"
 
 const containerVariants = {
   hidden: {},
@@ -82,7 +81,7 @@ export default function Studio() {
           >
             <img
               className="w-full max-w-[457px] h-auto object-cover rounded-lg"
-              src="{"
+              src="./assets/1.jpg"
               alt="Our Studio"
             />
           </motion.div>
