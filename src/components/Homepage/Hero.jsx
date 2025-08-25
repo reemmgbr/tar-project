@@ -7,19 +7,15 @@ const Hero = () => {
   const svgRef = useRef(null);
   const containerRef = useRef(null);
   
-  // Framer Motion animation controls
   const controls = useAnimation();
   
-  // Spring values for smooth mouse following
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
   const springX = useSpring(mouseX, { stiffness: 100, damping: 30 });
   const springY = useSpring(mouseY, { stiffness: 100, damping: 30 });
 
-  // Scroll animations - مراقبة الـ scroll للنافذة كاملة مع حساسية أكتر
   const { scrollY } = useViewportScroll();
 
-  // Transform scroll values - كل حركة scroll تأثر على الـ scale
   const leftShapeScale = useTransform(scrollY, 
     (value) => 1 + Math.sin(value * 0.005) * 0.5 + (value * 0.0008)
   );
@@ -33,12 +29,10 @@ const Hero = () => {
     (value) => 1 + Math.cos(value * 0.007) * 0.8 + (value * 0.0012)
   );
   
-  // Rotation مستمر مع كل حركة scroll
   const leftRotation = useTransform(scrollY, (value) => value * 0.3);
   const rightRotation = useTransform(scrollY, (value) => -value * 0.25);
   const bottomRotation = useTransform(scrollY, (value) => value * 0.2);
 
-  // Opacity يتغير مع الـ scroll بس يفضل مرئي
   const shapeOpacity = useTransform(scrollY, 
     (value) => Math.max(0.4, 1 - (value * 0.0003))
   );
@@ -135,6 +129,7 @@ const Hero = () => {
   };
 
   return (
+
     <motion.div 
       ref={containerRef}
       className="min-h-screen bg-black text-white relative overflow-hidden pt-[80px] sm:pt-[100px] md:pt-[120px] "
@@ -678,7 +673,9 @@ const Hero = () => {
           </motion.div>
         </motion.div>
       </main>
+      
     </motion.div>
+    
   );
 };
 

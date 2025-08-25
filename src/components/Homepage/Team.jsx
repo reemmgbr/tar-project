@@ -1,7 +1,11 @@
-import React from "react";
+import React, { useRef } from "react";
 import Button from "./button/Button";
+import member_one from "@/assets/2.jpg";
+import member_two from "@/assets/2 (1).jpg";
+import member_three from "@/assets/3.jpg";
+import member_four from "@/assets/4.jpg";
 import { FaTwitter, FaInstagram, FaLinkedin } from "react-icons/fa";
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 
 // Variants للجزء النصي
 const textContainer = {
@@ -12,7 +16,7 @@ const textContainer = {
     transition: {
       duration: 1,
       ease: [0.22, 1, 0.36, 1],
-      staggerChildren: 0.3, // 👈 يخلي العناصر الداخلية تظهر بالترتيب
+      staggerChildren: 0.3,
     },
   },
 };
@@ -22,7 +26,38 @@ const textItem = {
   visible: { opacity: 1, y: 0, transition: { duration: 0.8 } },
 };
 
+// Variants للصور
+const imagesContainer = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.3,
+    },
+  },
+};
+
+const imageItem = {
+  hidden: { opacity: 0, y: 50 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.8, ease: "easeOut" },
+  },
+};
+
 export default function Team() {
+  const team = [
+    { img: member_one, name: "Nahla Ibrahim" },
+    { img: member_two, name: "Reem Gbr" },
+    { img: member_three, name: "Mostafa Mohsen" },
+    { img: member_four, name: "Hana Mohamed" },
+  ];
+
+  // ريفرنس للجزء الخاص بالصور
+  const imagesRef = useRef(null);
+  const isInView = useInView(imagesRef, { once: true, amount: 0.2 }); 
+  // once:true = يشتغل أول مرة بس (Scroll Down) مش لما نرجع لفوق
+
   return (
     <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-0">
       <div className="flex flex-col lg:flex-row justify-center items-center gap-12">
@@ -67,39 +102,35 @@ export default function Team() {
         </motion.div>
 
         {/* Right Section - Team Images */}
-        <div className="w-full lg:w-1/2">
+        <motion.div
+          ref={imagesRef}
+          variants={imagesContainer}
+          initial="hidden"
+          animate={isInView ? "visible" : "hidden"} // يشتغل أول مرة بس لما تنزلي Scroll Down
+          className="w-full lg:w-1/2"
+        >
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-            
-            {[1, 2, 3, 4].map((item, index) => (
+            {team.map((item, index) => (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, scale: 0.9, y: 80 }}
-                whileInView={{ opacity: 1, scale: 1, y: 0 }}
-                transition={{ 
-                  duration: 1, 
-                  delay: index * 0.3, // 👈 أبطأ مع stagger أوضح
-                  ease: [0.22, 1, 0.36, 1] 
-                }}
-                viewport={{ once: false, amount: 0.3 }}
-                className={`group relative h-[350px] sm:h-[400px] w-full overflow-hidden ${
-                  index % 2 !== 0 ? "sm:mt-6" : ""
-                }`}
+                
+                variants={imageItem}
+                className="group relative overflow-hidden rounded-xl"
               >
+                {/* Image */}
                 <img
                   className="w-full h-full object-cover transition-all duration-700 ease-out group-hover:scale-110 group-hover:-translate-y-2"
-                  src="./assets/2 (1).jpg"
-                  alt="Team member"
+                  src={item.img}
+                  alt={item.name}
                 />
 
                 {/* Overlay */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/70 to-transparent opacity-0 translate-y-8 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-700 ease-out flex items-end p-6">
                   <div className="w-full">
                     <h5 className="text-lg sm:text-xl font-semibold text-white mb-1 hover:text-[#ffa700] transition-colors duration-300 cursor-pointer">
-                      Reem Gbr
+                      {item.name}
                     </h5>
-                    <p className="text-gray-300 text-sm mb-4">
-                      Front End Developer
-                    </p>
+                    <p className="text-gray-300 text-sm mb-4">Front End Developer</p>
                     <div className="flex space-x-3">
                       <a href="#" className="text-gray-300 hover:text-[#ffa700] transition-colors duration-300">
                         <FaTwitter className="text-lg" />
@@ -114,13 +145,12 @@ export default function Team() {
                   </div>
                 </div>
 
-                {/* Bottom Border */}
+                {/* Border underline */}
                 <div className="absolute bottom-0 left-0 right-0 h-1 bg-[#ffa700] origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-700 ease-out"></div>
               </motion.div>
             ))}
-
           </div>
-        </div>
+        </motion.div>
         
       </div>
     </div>

@@ -68,32 +68,33 @@ export default function Services() {
 
   return (
     <div className="bg-[#000000]">
-      <div className="container mx-auto px-6 py-40">
+      <div className="container mx-auto px-4 sm:px-6 py-[9rem] sm:py-40">
         <div className="relative w-full flex items-center justify-center mb-8 px-4">
           <div className="absolute top-1/2 left-0 h-[1px] bg-[#262222] w-1/2"></div>
           <div className="relative bg-black px-2 sm:px-4 flex items-center space-x-2 sm:space-x-3 text-xs sm:text-sm text-white font-medium tracking-wide ">
             <motion.a
               href="/"
-              className="hover:text-[#ff9800] transition-colors   text-xl"
+              className="hover:text-[#ff9800] transition-colors text-lg sm:text-xl"
               whileHover={{ scale: 1.05, rotate: 1 }}
             >
               HOMEPAGE
             </motion.a>{" "}
             <span>/</span>
-            <span className="text-xl">SERVICES</span>
+            <span className="text-lg sm:text-xl">SERVICES</span>
           </div>
         </div>
+        
         {/* العنوان والزر */}
         <motion.div
-          className="text-white mb-12 w-full ml-auto  " 
+          className="text-white mb-8 sm:mb-12 w-full ml-auto"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
           variants={textVariants}
         >
-          <h2 className="text-[40px] md:text-[74px] leading-tight  text-center font-bold  flex justify-center items-center">
+          <h2 className="text-[28px] sm:text-[40px] md:text-[74px] leading-tight text-center font-bold flex justify-center items-center">
             <motion.h1
-              className="text-white text-5xl md:text-7xl font-light leading-tight max-w-2xl"
+              className="text-white text-3xl sm:text-5xl md:text-7xl font-light leading-tight max-w-2xl"
               variants={textVariants}
             >
               This is{" "}
@@ -121,14 +122,14 @@ export default function Services() {
 
         {/* الخدمات الأولى */}
         <motion.div
-          className="flex flex-col md:flex-row gap-8 text-white"
+          className="flex flex-col lg:flex-row gap-6 sm:gap-8 text-white"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
         >
-          {/* عمود جانبي للتصميم */}
+          {/* عمود جانبي للتصميم - مخفي في الموبايل */}
           <motion.div
-            className="w-[30%] hidden md:block"
+            className="hidden lg:block lg:w-[20%]"
             initial={{ opacity: 0, scale: 0.8 }}
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.2 }}
@@ -137,23 +138,24 @@ export default function Services() {
             <motion.img
               src="./Screenshot 2025-08-23 214417.png"
               alt=""
+              className="w-full"
               animate={imageAnimation}
             />
           </motion.div>
 
           {/* محتوى الخدمات */}
-          <div className="flex flex-col md:flex-row gap-12 max-w-[50%]">
+          <div className="flex flex-col lg:flex-row gap-8 sm:gap-12 w-full lg:max-w-[70%] px-4 sm:px-6 lg:px-0">
             <motion.div
-              className="mt-0 md:mt-12 flex-1"
+              className="flex-1 bg-black/20 rounded-lg p-6 sm:p-8"
               variants={serviceVariants}
             >
               <motion.h3
-                className="text-2xl font-semibold mb-2"
+                className="text-xl sm:text-2xl font-semibold mb-2"
                 variants={textVariants}
               >
                 Branding and Identity Design
               </motion.h3>
-              <motion.p className="text-[#fff6] mb-4" variants={textVariants}>
+              <motion.p className="text-[#fff6] mb-4 text-sm sm:text-base" variants={textVariants}>
                 Our team of professionals is focused on helping your brand grow.
               </motion.p>
 
@@ -174,7 +176,7 @@ export default function Services() {
                 ].map((item, i) => (
                   <motion.li
                     key={i}
-                    className="pb-2 text-[#ffffff99] font-[500] text-[12px]"
+                    className="pb-2 text-[#ffffff99] font-[500] text-[11px] sm:text-[12px]"
                     style={{
                       borderBottom: "1px solid",
                       borderImage:
@@ -202,17 +204,17 @@ export default function Services() {
             </motion.div>
 
             <motion.div
-              className="flex-1"
+              className="flex-1 bg-black/20 rounded-lg p-6 sm:p-8 "
               variants={serviceVariants}
               transition={{ delay: 0.2 }}
             >
               <motion.h3
-                className="text-2xl font-semibold mb-2"
+                className="text-xl sm:text-2xl font-semibold mb-2"
                 variants={textVariants}
               >
                 Digital Marketing Solutions
               </motion.h3>
-              <motion.p className="text-[#fff6] mb-4" variants={textVariants}>
+              <motion.p className="text-[#fff6] mb-4 text-sm sm:text-base" variants={textVariants}>
                 We create strategies that connect your business with the right
                 audience effectively.
               </motion.p>
@@ -233,7 +235,7 @@ export default function Services() {
                 ].map((item, i) => (
                   <motion.li
                     key={i}
-                    className="pb-2 text-[#ffffff99] font-[500] text-[12px]"
+                    className="pb-2 text-[#ffffff99] font-[500] text-[11px] sm:text-[12px]"
                     style={{
                       borderBottom: "1px solid",
                       borderImage:
@@ -264,14 +266,14 @@ export default function Services() {
 
         {/* الخدمات الثانية */}
         <motion.div
-          className="flex flex-col md:flex-row gap-8 text-white mt-16"
+          className="flex flex-col lg:flex-row gap-6 sm:gap-8 text-white mt-12 sm:mt-16"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
         >
-          {/* عمود جانبي للتصميم */}
+          {/* عمود جانبي للتصميم - مخفي في الموبايل */}
           <motion.div
-            className="w-[30%] hidden md:block"
+            className="hidden lg:block lg:w-[20%]"
             initial={{ opacity: 0, scale: 0.8 }}
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.2 }}
@@ -280,28 +282,29 @@ export default function Services() {
             <motion.img
               src="./Screenshot 2025-08-23 214417.png"
               alt=""
+              className="w-full"
               animate={{
                 y: [0, 15, 0],
                 transition: {
                   duration: 3.5,
                   repeat: Infinity,
                   ease: "easeInOut",
-                  delay: 1.5, // تأخير مختلف لجعل الحركة متنوعة
+                  delay: 1.5,
                 },
               }}
             />
           </motion.div>
 
           {/* محتوى الخدمات */}
-          <div className="flex flex-col md:flex-row gap-12 max-w-[50%]">
-            <motion.div className="mt-12 flex-1" variants={serviceVariants}>
+          <div className="flex flex-col lg:flex-row gap-8 sm:gap-12 w-full lg:max-w-[70%] px-4 sm:px-6 lg:px-0">
+            <motion.div className="flex-1 bg-black/20 rounded-lg p-6 sm:p-8 " variants={serviceVariants}>
               <motion.h3
-                className="text-2xl font-semibold mb-2"
+                className="text-xl sm:text-2xl font-semibold mb-2"
                 variants={textVariants}
               >
                 Web Development
               </motion.h3>
-              <motion.p className="text-[#fff6] mb-4" variants={textVariants}>
+              <motion.p className="text-[#fff6] mb-4 text-sm sm:text-base" variants={textVariants}>
                 Building modern, responsive websites that deliver exceptional
                 user experiences.
               </motion.p>
@@ -323,7 +326,7 @@ export default function Services() {
                 ].map((item, i) => (
                   <motion.li
                     key={i}
-                    className="pb-2 text-[#ffffff99] font-[500] text-[12px]"
+                    className="pb-2 text-[#ffffff99] font-[500] text-[11px] sm:text-[12px]"
                     style={{
                       borderBottom: "1px solid",
                       borderImage:
@@ -351,17 +354,17 @@ export default function Services() {
             </motion.div>
 
             <motion.div
-              className="flex-1"
+              className="flex-1 bg-black/20 rounded-lg p-6 sm:p-8 "
               variants={serviceVariants}
               transition={{ delay: 0.2 }}
             >
               <motion.h3
-                className="text-2xl font-semibold mb-2"
+                className="text-xl sm:text-2xl font-semibold mb-2"
                 variants={textVariants}
               >
                 Consulting & Strategy
               </motion.h3>
-              <motion.p className="text-[#fff6] mb-4" variants={textVariants}>
+              <motion.p className="text-[#fff6] mb-4 text-sm sm:text-base" variants={textVariants}>
                 Strategic guidance to help your business grow and achieve its
                 digital transformation goals.
               </motion.p>
@@ -382,7 +385,7 @@ export default function Services() {
                 ].map((item, i) => (
                   <motion.li
                     key={i}
-                    className="pb-2 text-[#ffffff99] font-[500] text-[12px]"
+                    className="pb-2 text-[#ffffff99] font-[500] text-[11px] sm:text-[12px]"
                     style={{
                       borderBottom: "1px solid",
                       borderImage:

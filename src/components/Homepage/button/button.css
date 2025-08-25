@@ -94,5 +94,5 @@ button:hover .circle .icon.arrow {
 }
 
 button:hover .button-text {
-  color: #fff;
+  color: #fff  !important;
 }

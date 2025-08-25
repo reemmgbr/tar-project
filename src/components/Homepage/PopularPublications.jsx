@@ -1,43 +1,59 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { ArrowRight } from 'lucide-react';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const PopularPublications = () => {
+  useEffect(() => {
+    AOS.init({
+      duration: 500, // مدة الأنيميشن
+      once: false, 
+    });
+  }, []);
+
   const publications = [
     {
       id: 1,
       category: "TECHNOLOGY",
       date: "MAY 24 2023",
       title: "How to Become a Graphic Designer in 10 Simple Steps",
-      description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Etus sequi commodi dignissimos optio, beatae, eos necessitatibus nisi. Nam cupidita...",
-      image: "https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
+      description:
+        "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Etus sequi commodi dignissimos optio, beatae, eos necessitatibus nisi. Nam cupidita...",
+      image:
+        "https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?auto=format&fit=crop&w=1000&q=80",
     },
     {
       id: 2,
       category: "TECHNOLOGY",
       date: "MAY 24 2023",
       title: "16 Best Graphic Design Online and Offline Courses",
-      description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Etus sequi commodi dignissimos optio, beatae, eos necessitatibus nisi. Nam cupidita...",
-      image: "https://images.unsplash.com/photo-1586717791821-3f44a563fa4c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
-    }
+      description:
+        "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Etus sequi commodi dignissimos optio, beatae, eos necessitatibus nisi. Nam cupidita...",
+      image:
+        "https://images.unsplash.com/photo-1586717791821-3f44a563fa4c?auto=format&fit=crop&w=1000&q=80",
+    },
   ];
 
   return (
-    <div className="max-w-7xl mx-auto px-6 ">
-      {/* Header */}
-      <div className="flex justify-between items-center mb-12">
-        <h2 className="text-xl md:text-4xl font-[500] text-gray-900">Popular Publications:</h2>
-        <button className="flex items-center  text-xl mt-0 gap-2 text-gray-600 hover:text-gray-900 transition-colors group">
-          <span className="text-sm font-medium  uppercase">VIEW ALL</span>
+    <div className="max-w-7xl mx-auto px-6">
+      <div className="flex justify-between items-center mb-12" data-aos="fade-up">
+        <h2 className="text-xl md:text-4xl font-[500] text-gray-900">
+          Popular Publications:
+        </h2>
+        <button className="flex items-center text-xl mt-0 gap-2 text-gray-600 hover:text-gray-900 transition-colors group">
+          <span className="text-sm font-medium uppercase">VIEW ALL</span>
           <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
         </button>
       </div>
 
-      {/* Publications Grid */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-        {publications.map((publication) => (
-          <article key={publication.id} className="">
-            {/* Image */}
-            <div className=" overflow-hidden">
+        {publications.map((publication, index) => (
+          <article
+            key={publication.id}
+            data-aos="fade-up"
+            data-aos-delay={index * 200} 
+          >
+            <div className="overflow-hidden">
               <img
                 src={publication.image}
                 alt={publication.title}
@@ -45,9 +61,7 @@ const PopularPublications = () => {
               />
             </div>
 
-            {/* Content */}
             <div className="p-8">
-              {/* Category and Date */}
               <div className="flex items-center gap-4 mb-4">
                 <span className="text-orange-500 font-semibold text-sm tracking-wider uppercase">
                   {publication.category}
@@ -57,19 +71,18 @@ const PopularPublications = () => {
                 </span>
               </div>
 
-              {/* Title */}
               <h3 className="text-xl font-bold text-gray-900 mb-4 leading-tight hover:text-orange-500 transition-colors cursor-pointer">
                 {publication.title}
               </h3>
 
-              {/* Description */}
               <p className="text-gray-600 mb-6 leading-relaxed">
                 {publication.description}
               </p>
 
-              {/* Read More Button */}
               <button className="flex items-center gap-2 text-gray-600 hover:text-orange-500 transition-colors group">
-                <span className="text-sm font-medium tracking-wider uppercase">READ MORE</span>
+                <span className="text-sm font-medium tracking-wider uppercase">
+                  READ MORE
+                </span>
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </button>
             </div>

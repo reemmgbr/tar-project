@@ -4,21 +4,18 @@ import Buttontwo from "../buttonoronage/Buttontwo";
 import "./ContactPage.css";
 
 const ContactPage = () => {
-  // Refs
   const breadcrumbRef = useRef(null);
   const titleRef = useRef(null);
   const buttonRef = useRef(null);
   const mapRef = useRef(null);
   const formRef = useRef(null);
 
-  // InView hooks
   const isBreadcrumbInView = useInView(breadcrumbRef, { once: false, threshold: 0.3 });
   const isTitleInView = useInView(titleRef, { once: false, threshold: 0.3 });
   const isButtonInView = useInView(buttonRef, { once: false, threshold: 0.3 });
   const isMapInView = useInView(mapRef, { once: false, threshold: 0.2 });
   const isFormInView = useInView(formRef, { once: false, threshold: 0.2 });
 
-  // Animation Variants
   const slideUpFadeVariants = {
     hidden: { y: 40, opacity: 0 },
     visible: { y: 0, opacity: 1, transition: { duration: 0.6, ease: [0.42, 0, 0.58, 1] } }
@@ -83,7 +80,6 @@ const ContactPage = () => {
         >
           Get in touch!
         </motion.h1>
-
         <motion.div
           ref={buttonRef}
           initial="hidden"

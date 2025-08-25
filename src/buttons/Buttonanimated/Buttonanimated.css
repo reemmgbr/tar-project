@@ -1,4 +1,3 @@
-
 .button {
   margin: 0;
   height: auto;
@@ -12,7 +11,7 @@
   --border-right: 6px;
   --text-stroke-color: #ff9800;
   --animation-color: #ff9800;
-  --fs-size: 4em;
+  --fs-size: 4em; /* Default size for desktop */
   letter-spacing: 3px;
   text-decoration: none;
   font-size: var(--fs-size);
@@ -20,7 +19,9 @@
   text-transform: uppercase;
   color: transparent;
   -webkit-text-stroke: 1px var(--text-stroke-color);
+  transition: all 0.3s ease;
 }
+
 /* this is the text, when you hover on button */
 .hover-text {
   position: absolute;
@@ -33,9 +34,90 @@
   overflow: hidden;
   transition: 0.5s;
   -webkit-text-stroke: 1px var(--animation-color);
+  /* Ensure border matches text height */
+  display: flex;
+  align-items: center;
 }
+
 /* hover */
 .button:hover .hover-text {
   width: 100%;
-  filter: drop-shadow(0 0 23px var(--animation-color))
+  filter: drop-shadow(0 0 23px var(--animation-color));
+}
+
+/* Tablet styles */
+@media (max-width: 768px) {
+  .button {
+    --fs-size: 2.5em; /* Smaller for tablets */
+    --border-right: 4px; /* Thinner border */
+    letter-spacing: 2px; /* Less spacing */
+  }
+  
+  .hover-text {
+    border-right: var(--border-right) solid var(--animation-color);
+  }
+  
+  .button:hover .hover-text {
+    filter: drop-shadow(0 0 15px var(--animation-color)); /* Reduced glow */
+  }
+}
+
+/* Mobile styles */
+@media (max-width: 480px) {
+  .button {
+    --fs-size: 2.8em; /* Bigger for mobile readability */
+    --border-right: 2px; /* Extra thin border */
+    letter-spacing: 1.5px; /* Minimal spacing */
+    -webkit-text-stroke: 0.8px var(--text-stroke-color); /* Thinner stroke */
+    line-height: 1.1; /* Better line height */
+  }
+  
+  .hover-text {
+    border-right: var(--border-right) solid var(--animation-color);
+    -webkit-text-stroke: 0.8px var(--animation-color);
+    transition: 0.4s; /* Slightly faster animation */
+    /* Make border height match text exactly */
+    display: flex;
+    align-items: center;
+    height: 100%;
+  }
+  
+  .button:hover .hover-text {
+    filter: drop-shadow(0 0 10px var(--animation-color)); /* Minimal glow */
+  }
+}
+
+/* Very small mobile (320px and below) */
+@media (max-width: 320px) {
+  .button {
+    --fs-size: 2.2em; /* Bigger for readability */
+    --border-right: 1px; /* Ultra thin border */
+    letter-spacing: 1px;
+    -webkit-text-stroke: 0.5px var(--text-stroke-color);
+    line-height: 1.1;
+  }
+  
+  .hover-text {
+    -webkit-text-stroke: 0.5px var(--animation-color);
+    /* Make border height match text exactly */
+    display: flex;
+    align-items: center;
+    height: 100%;
+  }
+  
+  .button:hover .hover-text {
+    filter: drop-shadow(0 0 8px var(--animation-color));
+  }
+}
+
+/* Touch device optimizations */
+@media (hover: none) and (pointer: coarse) {
+
+  /* Make hover effect trigger on touch/tap */
+  .button:active .hover-text {
+    width: 100%;
+    filter: drop-shadow(0 0 10px var(--animation-color));
+  }
+  
+
 }
